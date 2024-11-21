@@ -7,15 +7,22 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.aprendec.empresa.entities.EmployeeDTO;
+import com.aprendec.empresa.entities.Nominas;
 import com.aprendec.empresa.entities.Empleados;
 import com.aprendec.empresa.repositories.EmployeeRepository;
+import com.aprendec.empresa.repositories.PayslipRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	private final EmployeeRepository employeeRepository;
+	private final PayslipRepository payslipRepository;
+	private final PayslipService payslipService;
 
-	public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+	public EmployeeServiceImpl(EmployeeRepository employeeRepository, PayslipService payslipService,
+			PayslipRepository payslipRepository) {
 		this.employeeRepository = employeeRepository;
+		this.payslipRepository = payslipRepository;
+		this.payslipService = payslipService;
 	}
 
 	@Override
@@ -27,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public String getSalary(String dni) throws SQLException {
-		return employeeRepository.findSalaryByDni(dni);
+		return payslipRepository.findSalaryByDni(dni);
 	}
 
 	@Override
@@ -81,7 +88,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 				employeeRepository.save(updatedEmployee);
 
+				Nominas existingNomina = payslipRepository.findNominaByDni(searchedEmployeeDni);
+
+				Nominas updatedPayslip = new Nominas();
+
+				updatedPayslip.setDni(newEmployee.getDni());
+				updatedPayslip.setSueldo(payslipService.calcSalary(newEmployee));
+
+				payslipRepository.save(updatedPayslip);
+
+				payslipRepository.delete(existingNomina);
+
 				employeeRepository.delete(existingEmployee);
+
 			} else {
 				existingEmployee.setNombre(newEmployee.getNombre());
 				existingEmployee.setCategoria(newEmployee.getCategoria());

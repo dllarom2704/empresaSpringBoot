@@ -12,10 +12,6 @@ public interface EmployeeRepository extends JpaRepository<Empleados, String> {
 	// search an employee by dni
 	Empleados findByDni(String dni);
 
-	// search an employee salary
-	@Query("SELECT nomina.sueldo FROM Nominas nomina WHERE nomina.dni = ?1")
-	String findSalaryByDni(String dni);
-	
 	// search employees by categoria or anyo
 	@Query("SELECT employee FROM Empleados employee WHERE employee.categoria = ?1 OR employee.anyos = ?1")
 	List<Empleados> findByCategoriaOrAnyos(Integer employeeCategoriaOrAnyo);
