@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Editar Empleado</title>
+	<link rel="stylesheet" href="../static/styles/style.css" th:href="@{../styles/style.css}">
+</head>
+
+<body>
+	<div id="container">
+		<p class="btn"><a th:href="@{/empresa/}">Volver</a></p>
+		<main>
+			<div>
+				<h1>Editar Empleado</h1>
+				<form th:action="@{/empresa/editar}" method="post">
+					<input type="hidden" name="dniEmpleadoBuscado" th:value="${employee.dni}">
+					<fieldset>
+						<label for="nombre">Nuevo Nombre</label>
+						<input type="text" id="nombre" name="nombre" th:value="${employee.nombre}">
+					</fieldset>
+					<fieldset>
+						<label for="dni">Nuevo DNI</label>
+						<input type="text" id="dni" name="dni" th:value="${employee.dni}">
+					</fieldset>
+					<fieldset>
+						<label for="sexo">Nuevo Sexo</label>
+						<input type="text" id="sexo" name="sexo" th:value="${employee.sexo}">
+					</fieldset>
+					<fieldset>
+						<label for="categoria">Nueva Categoría</label>
+						<input type="text" id="categoria" name="categoria" th:value="${employee.categoria}">
+					</fieldset>
+					<fieldset>
+						<label for="anyos">Nuevos Años</label>
+						<input type="text" id="anyos" name="anyos" th:value="${employee.anyos}">
+					</fieldset>
+					<button type="submit">Editar</button>
+				</form>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>

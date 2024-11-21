@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Empresa</title>
+	<link rel="stylesheet" href="../static/styles/style.css" th:href="@{../styles/style.css}">
+</head>
+
+<body>
+	<div id="container">
+		<main>
+			<div>
+				<h1>Empresa</h1>
+				<nav>
+					<ul>
+						<li><a th:href="@{/empresa/listar}">Listar empleados</a></li>
+						<li><a th:href="@{/empresa/buscarDni}">Mostrar salario</a></li>
+						<li><a th:href="@{/empresa/buscarDato}">Editar datos</a></li>
+					</ul>
+				</nav>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>

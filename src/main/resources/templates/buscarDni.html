@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Buscar por DNI</title>
+	<link rel="stylesheet" href="../static/styles/style.css" th:href="@{../styles/style.css}">
+</head>
+
+<body>
+	<div id="container">
+		<p class="btn"><a th:href="@{/empresa/}">Volver</a></p>
+		<main>
+			<div>
+				<h1>Mostrar salario de un empleado</h1>
+				<form th:action="@{/empresa/buscarDni}" method="post">
+					<fieldset>
+						<label for="dni">Introduce el DNI</label>
+						<input type="text" id="dni" name="dni">
+					</fieldset>
+					<button type="submit">Buscar</button>
+				</form>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Salario</title>
+	<link rel="stylesheet" href="../static/styles/style.css" th:href="@{../styles/style.css}">
+</head>
+
+<body>
+	<div id="container">
+		<p class="btn"><a th:href="@{/empresa/}">Volver</a></p>
+		<main>
+			<h1 th:text="'Sueldo ' + ${salary} + ' €'"></h1>
+		</main>
+	</div>
+</body>
+
+</html>

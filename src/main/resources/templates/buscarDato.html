@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Buscar por Dato</title>
+	<link rel="stylesheet" href="../static/styles/style.css" th:href="@{../styles/style.css}">
+</head>
+
+<body>
+	<div id="container">
+		<p class="btn"><a th:href="@{/empresa/}">Volver</a></p>
+		<main>
+			<div>
+				<h1>Buscar un empleado por cualquier dato</h1>
+				<form th:action="@{/empresa/buscarDato}" method="post">
+					<fieldset>
+						<label for="datum">Introduce cualquier dato de un empleado</label>
+						<input type="text" id="datum" name="datum">
+					</fieldset>
+					<button type="submit">Buscar</button>
+				</form>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>
